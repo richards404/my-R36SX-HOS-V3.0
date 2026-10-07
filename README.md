@@ -10,22 +10,11 @@ But I love this little device anyway.
 
 Despite its hardware and software limitations, it has been surprisingly fun to investigate, modify and experiment with. The community around these inexpensive handhelds is also constantly discovering new things about them.
 
-My unit uses the following PCB revision:
-
-```text
-R36S-V3.0 (2026.07.20)
-```
-
-and originally came with:
-
-```text
-H.OS v1.2
-```
+My unit uses the following PCB revision: R36S-V3.0 (2026.07.20) and originally came with: H.OS v1.2
 
 This repository is my personal documentation of this particular hardware revision, including hardware identification, stock firmware analysis, backups, TreeFrogUI experiments, USB peripherals, HDMI testing and other findings.
 
 ---
-
 # Important warning
 
 **Do not assume this device is compatible with firmware made for the original R36S.**
@@ -71,11 +60,7 @@ Before experimenting with firmware or storage:
 
 ![R36SX V3.0 main PCB](docs/images/r36sx-v3-pcb.jpg)
 
-The main PCB is marked:
-
-```text
-R36S-V3.0 (2026.07.20)
-```
+The main PCB is marked: R36S-V3.0 (2026.07.20)
 
 The board layout differs significantly from the hardware normally associated with the original RK3326-based R36S.
 
@@ -272,8 +257,6 @@ cubegm/usr/bin/icube
 
 Emulator cores are stored as shared libraries.
 
-Because of this architecture, I prefer not to simply describe the entire system as "RetroArch".
-
 It uses Libretro-related emulator cores, but it has its own frontend and system structure.
 
 ---
@@ -307,13 +290,7 @@ The stock H.OS frontend itself remains quite limited, so I eventually started ex
 
 # TreeFrogUI on V3.0
 
-I managed to get:
-
-```text
-TreeFrogUI 1.6.0_e
-```
-
-running on my V3.0 console.
+I managed to get TreeFrogUI `1.6.0_e` running on my V3.0 console.
 
 My current setup was created experimentally by combining the required TreeFrogUI files with files from the V3.0 stock system.
 
@@ -321,7 +298,7 @@ It has been working surprisingly well.
 
 However:
 
-> **TreeFrogUI 1.6.0_e was not specifically made for this V3.0 PCB, so my installation should still be considered experimental.**
+> **TreeFrogUI, at the moment, only support versions 2.7 and 2.6, so for this V3.0 PCB, my installation should still be considered experimental.**
 
 I plan to document the installation process and my modifications separately.
 
@@ -332,8 +309,6 @@ I plan to document the installation process and my modifications separately.
 # HDMI with TreeFrogUI
 
 TreeFrogUI works very well through HDMI while a game is running.
-
-I tested GB and GBA games successfully.
 
 There is currently one strange issue.
 
@@ -350,19 +325,11 @@ When the HDMI cable is removed:
 
 After reconnecting HDMI, TV output works normally again.
 
-This may simply be an incompatibility caused by using an experimental TreeFrogUI installation on hardware that was not officially targeted by that version.
+This may simply be an incompatibility caused by using an experimental TreeFrogUI installation on this V3.0 that was not officially targeted by that version.
 
 Importantly, normal gameplay itself works well.
 
-In-game save-state key combinations such as:
-
-```text
-SELECT + L2 / R2
-```
-
-can still be used while playing through HDMI.
-
----
+In-game save-state key combinations such as `SELECT + L2 / R2` can still be used while playing through HDMI without any issue.
 
 # USB OTG experiments
 
@@ -458,95 +425,19 @@ No PC is necessary once the environment is available on the console.
 
 ## Rock Paper Scissors test game
 
-As a simple experiment, I created:
+As a simple experiment, I created: `rock-paper-scissors.nx
 
-```text
-rock-paper-scissors.nx
-```
-
-The game uses only the controls available on the handheld and can be placed in:
-
-```text
-roms/lowres-nx/rock-paper-scissors.nx
-```
+The game uses only the controls available on the handheld and can be placed in: roms/lowres-nx/rock-paper-scissors.nx`
 
 Because `.nx` files are plain text, opening the game in a text editor is also a good way to see how simple the LowRes NX syntax is.
 
-It looks and feels very similar to BASIC, making it a fun environment for small experiments.
+It looks and feels very similar to BASIC, making it a fun environment for small experiments!
 
 There may be other TreeFrogUI cores or runtimes that could also be used for programming directly on the handheld.
 
-So far, however, **LowRes NX is the first one I have discovered and tested for this purpose**.
+So far, however, **LowRes NX is the first one I have discovered and tested for this purpose =)**.
 
----
 
-# Original SD card
-
-The system depends heavily on the contents of the original microSD card.
-
-For that reason, I consider the original card part of the device firmware and treat it as something that should be preserved.
-
-Before changing, formatting or repairing anything, I created a complete bit-for-bit image of the card.
-
-My basic workflow was:
-
-```text
-original SD card
-        ↓
-complete raw image
-        ↓
-verify image
-        ↓
-preserve untouched copy
-        ↓
-extract filesystem
-        ↓
-work only on copies / replacement cards
-```
-
-Useful Linux tools for this kind of work include:
-
-```text
-ddrescue
-dd
-lsblk
-fdisk
-blkid
-TestDisk
-mount
-sha256sum
-cmp
-```
-
-I used `ddrescue` to create the original image and verified it against the physical card.
-
----
-
-# V3.0 stock firmware backups
-
-I have created two types of backup for this revision.
-
-## Minimal backup
-
-A smaller version containing the files required to preserve and study the V3.0 system without the large ROM collection.
-
-```text
-R36SX-HOS1.2-V3.0-Minimal.zip
-```
-
-## Full extracted SD card
-
-I also preserved the complete extracted contents of the original SD card for comparison and research.
-
-```text
-R36SX-HOS1.2-V3.0-full.zip
-```
-
-These backups are intended specifically for studying this V3.0 revision.
-
-They should not be assumed compatible with other R36SX, GB350 or R36S-style boards.
-
----
 
 # Current hardware identification
 
@@ -562,78 +453,97 @@ They should not be assumed compatible with other R36SX, GB350 or R36S-style boar
 | L1/L2/R1/R2 | Physical shoulder-button switches | Identified |
 
 ---
+# Credits, upstream projects & support
 
-# Current project status
+This repository would not exist without the work already done by other people in the retro-handheld and open-source communities.
 
-- [x] PCB revision identified
-- [x] H.OS 1.2 identified
-- [x] MIPS userspace confirmed
-- [x] Samsung RAM chip identified
-- [x] RAM capacity identified as 256 MiB
-- [x] Original SD card imaged and preserved
-- [x] H.OS filesystem extracted
-- [x] HDMI video tested
-- [x] HDMI audio tested
-- [x] USB controller working through hub
-- [x] USB keyboard detected directly
-- [x] TreeFrogUI running on V3.0
-- [x] LowRes NX tested
-- [x] Programming experiment with USB keyboard
-- [ ] Exact U1 SoC identified
-- [ ] TF2-GAME Linux device identified
-- [ ] Clean TreeFrogUI installation documented
-- [ ] Keyboard modifications documented
-- [ ] HDMI return-to-menu audio problem understood
-- [ ] Remaining PCB ICs identified
-- [ ] Reverse side of PCB documented
-- [ ] Emulator compatibility table completed
+A large part of my investigation started with **SjslTech's** research into the R36SX / GB350-style handheld family.
+
+His videos, guides and tools documenting earlier R36SX revisions and the unusual H.OS / `cubegm` environment were extremely useful for understanding that these devices are fundamentally different from the original RK3326-based R36S.
+
+His work was also what motivated me to start investigating my own V3.0 revision more seriously and to create this repository.
+
+### SjslTech
+
+SjslTech maintains guides, tools, backups and other resources specifically related to the R36S, R36SX and similar handhelds.
+
+If this repository helped you, I strongly recommend visiting his original resources as well. His work contains much more information than I could reproduce here and continues to evolve as new hardware revisions appear.
+
+[YouTube](https://www.youtube.com/channel/UCMObFdI4xBrff0U9r2XqnkQ)
+[Github](https://sjsltech.github.io) 
+**Support:** [SjslTech on Ko-fi: ](https://ko-fi.com/sjsltech) 
 
 ---
 
-# Suggested image layout
+## TreeFrogUI
 
-I suggest keeping repository photographs under:
+A huge thanks also goes to **Tomasz Zubertowski and the TreeFrogUI contributors**.
 
-```text
-docs/
-└── images/
-    ├── r36sx-v3-front.jpg
-    ├── r36sx-v3-opened.jpg
-    ├── r36sx-v3-pcb.jpg
-    ├── r36sx-v3-u1-soc.jpg
-    ├── r36sx-v3-u2-ram.jpg
-    ├── r36sx-v3-hdmi.jpg
-    ├── r36sx-v3-tf-slots.jpg
-    └── r36sx-v3-treefrogui.jpg
-```
+TreeFrogUI completely changed what I expected this inexpensive console to be capable of.
 
-Images can then be added to any Markdown document with:
+Instead of being limited to the original H.OS frontend, TreeFrogUI provides a much more flexible environment, additional emulator cores, proper configuration options and many features that make these MIPS-based handhelds significantly more useful.
 
-```markdown
-![Image description](docs/images/image-name.jpg)
-```
+My experiments with HDMI, USB peripherals, keyboard input and LowRes NX on the V3.0 would have been far less interesting without TreeFrogUI.
+
+**Project:** [TreeFrogUI on GitHub](https://github.com/tzubertowski/TreeFrogUI)
+
+TreeFrogUI is developed largely through community effort, and the project specifically welcomes support to help obtain additional handhelds for development and hardware-porting work.
+
+**Support:** [TreeFrogUI/proszty on Ko-fi](https://ko-fi.com/proszty)
+
+If you are using TreeFrogUI, please visit the original repository for the latest releases, installation instructions, supported devices, documentation and credits.
 
 ---
 
-# Credits
+## LowRes NX
 
-A large part of this investigation was inspired by **SjslTech's** work on the R36SX / GB350-style handheld family.
+Special thanks to **Timo Kloss/Inutilis Software**, creator of **[LowRes NX]**(https://lowresnx.inutilis.com/).
 
-His videos documenting earlier board revisions and the unusual H.OS / `cubegm` system were extremely useful and helped me understand that these devices are fundamentally different from the original R36S.
+LowRes NX is a free and open-source fantasy console designed around a structured BASIC-like programming language.
 
-His work also motivated me to start documenting my own V3.0 revision.
+It includes its own graphics and sound tools and was designed not only for playing games, but also for creating them.
 
-Many thanks as well to the developers and contributors behind **TreeFrogUI**, **LowRes NX**, and the wider handheld emulation community.
+Discovering the LowRes NX core in TreeFrogUI gave me one of my favorite ideas for this project:
 
-These cheap little consoles become much more interesting when people start opening them, studying how they work and sharing their discoveries.
+> using the R36SX itself as a tiny portable programming computer!!
+
+With a small USB keyboard and a simple text editor, it becomes possible to write an `.nx` program, save it and immediately test it on the same handheld.
+
+Please visit the original LowRes NX project — especially if experimenting with programming on these handhelds interests you.
+
+**Official website:** [LowRes NX](https://lowresnx.inutilis.com/)  
+**Source code:** [LowRes NX on GitHub](https://github.com/timoinutilis/lowres-nx)  
+**Documentation:** [LowRes NX Manual](https://lowresnx.inutilis.com/docs/manual-easy-02.html)
+
+LowRes NX is a particularly interesting project and deserves more visibility. If you enjoy it, please explore the author's original work, try the example programs, read the documentation and share the project with other people who may be interested in retro-style programming.
 
 ---
+
+## Open-source and handheld communities
+
+Many additional projects, emulator authors, reverse-engineering efforts and community members indirectly make experiments like this possible.
+
+TreeFrogUI itself incorporates or builds upon work from multiple upstream projects and emulator cores. Please refer to its own repository and license documentation for the complete attribution list.
+
+I strongly encourage anyone using information from this repository to follow those links upstream instead of treating this repository as the original source of those projects.
+
+---
+
+> ### Please support the original authors
+>
+> This repository is only my personal documentation of experiments performed on one R36SX V3.0 unit.
+>
+> **It is not a replacement for the projects, documentation, videos or repositories created by the people credited above.**
+>
+> If something here is useful to you, please also visit the original project pages, read their documentation, star/watch their repositories, subscribe to their channels, report useful test results and contribute when possible.
+>
+> Some of these projects are maintained by individuals in their spare time, often using their own money to purchase hardware for testing and development.
+>
+> Giving the original authors visibility, feedback and support helps keep these projects alive ;).
 
 # Disclaimer
 
-This is an independent hobbyist research and documentation project.
-
-I am not affiliated with the console manufacturer, its sellers, H.OS, TreeFrogUI, LowRes NX or any other project mentioned here.
+This is only an independent hobbyist research and documentation project.
 
 Hardware revisions can differ significantly even between devices sold under the same name or using nearly identical enclosures.
 
