@@ -72,13 +72,7 @@ Some of the most important visible components are described below.
 
 ![R36SX V3.0 U1 SoC](docs/images/r36sx-v3-u1-soc.jpg)
 
-The large square IC mounted at an angle near the upper-center of the PCB is marked as:
-
-```text
-U1
-```
-
-This appears to be the main SoC.
+The large square IC mounted at an angle near the upper-center of the PCB is marked as: U1. This appears to be the main SoC.
 
 Unfortunately, there is no readable part number on the package in my current photos.
 
@@ -113,22 +107,13 @@ SAMSUNG
 K4B2G1646Q-BCK0
 ```
 
-This is a Samsung **2 Gbit DDR3 SDRAM** device organized as:
+This is a Samsung **2 Gbit DDR3 SDRAM** device organized as: 128M × 16
 
-```text
-128M × 16
-```
-
-That corresponds to:
-
-```text
-2 Gbit
-= 256 MiB
-```
+That corresponds to: 2 Gbit = 256 MiB
 
 So this V3.0 PCB appears to contain **256 MiB of physical RAM**.
 
-The exact amount reported as available by Linux may be slightly lower because some memory can be reserved for the kernel, framebuffer or other hardware functions.
+But the exact amount reported as available by Linux may be slightly lower because some memory can be reserved for the kernel, framebuffer or other hardware functions...
 
 ---
 
@@ -423,22 +408,6 @@ No PC is necessary once the environment is available on the console.
 
 ---
 
-## Rock Paper Scissors test game
-
-As a simple experiment, I created: `rock-paper-scissors.nx
-
-The game uses only the controls available on the handheld and can be placed in: roms/lowres-nx/rock-paper-scissors.nx`
-
-Because `.nx` files are plain text, opening the game in a text editor is also a good way to see how simple the LowRes NX syntax is.
-
-It looks and feels very similar to BASIC, making it a fun environment for small experiments!
-
-There may be other TreeFrogUI cores or runtimes that could also be used for programming directly on the handheld.
-
-So far, however, **LowRes NX is the first one I have discovered and tested for this purpose =)**.
-
-
-
 # Current hardware identification
 
 | Board reference | Identification | Status |
@@ -469,8 +438,8 @@ SjslTech maintains guides, tools, backups and other resources specifically relat
 
 If this repository helped you, I strongly recommend visiting his original resources as well. His work contains much more information than I could reproduce here and continues to evolve as new hardware revisions appear.
 
-[YouTube](https://www.youtube.com/channel/UCMObFdI4xBrff0U9r2XqnkQ)
-[Github](https://sjsltech.github.io) 
+**YouTube:** [SjslTech on YouTube](https://www.youtube.com/channel/UCMObFdI4xBrff0U9r2XqnkQ)
+**Github:** [SjslTech on Github](https://sjsltech.github.io) 
 **Support:** [SjslTech on Ko-fi: ](https://ko-fi.com/sjsltech) 
 
 ---
